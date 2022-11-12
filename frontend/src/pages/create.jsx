@@ -5,12 +5,23 @@ export function Create() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [done, setDone] = useState(false);
+
   function handleSubmit(e) {
     e.preventDefault();
     const requestData = JSON.stringify({title, content});
     const headers = {"content-type": "application/json"};
 
-    // ??
+    fetch('http://localhost:3000/blog/create-post', {
+      method: 'POST',
+      body: requestData, 
+      headers: headers
+    }).then(res => {
+      if (res.status == 404) return alert('Please fill out both fields');
+      alert('Blog post successfully created')
+      setDone(true);
+    }).catch(()=> alert("An error has occured"));
+    setDone(false);
+
     console.log(requestData);
   }
   if (done) {

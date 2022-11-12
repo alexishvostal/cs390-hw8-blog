@@ -1,4 +1,4 @@
-import express from "express";
+import express, { json } from "express";
 
 import {BlogModel} from "../schema/blog.js";
 
@@ -15,6 +15,10 @@ router.get("/", async (req, res, next) => {
 router.post("/create-post", async (req, res) => {
   // body should be JSON
   const body = req.body;
+  // return error if one of the fields is empty
+  if (!body.content.length || !body.title.length) {
+    return res.status(404).send();
+  }
   // create blog model with the request body
   const blog = new BlogModel({content: body.content, title: body.title});
   // remember to await .save();
