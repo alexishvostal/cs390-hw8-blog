@@ -17,7 +17,7 @@ router.post("/create-post", async (req, res) => {
   const body = req.body;
   // return error if one of the fields is empty
   if (!body.content.length || !body.title.length) {
-    return res.status(404).send();
+    return res.status(400).send();
   }
   // create blog model with the request body
   const blog = new BlogModel({content: body.content, title: body.title});

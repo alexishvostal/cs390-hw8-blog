@@ -16,7 +16,7 @@ export function Create() {
       body: requestData, 
       headers: headers
     }).then(res => {
-      if (res.status == 404) return alert('Please fill out both fields');
+      if (res.status == 400) return alert('Please fill out both fields');
       alert('Blog post successfully created')
       setDone(true);
     }).catch(()=> alert("An error has occured"));
