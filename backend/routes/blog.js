@@ -4,7 +4,7 @@ import {BlogModel} from "../schema/blog.js";
 
 const router = express.Router();
 
-/* GET users listing. */
+/* GET route for retrieving all blog posts from database */
 router.get("/", async (req, res, next) => {
   // find blogs based on no condition==> get all blogs
   const blogs = await BlogModel.find({});
@@ -12,6 +12,7 @@ router.get("/", async (req, res, next) => {
   return res.send(blogs.map((blog) => blog.toObject()));
 });
 
+/* POST route for creating a blog post and inserting it into database */
 router.post("/create-post", async (req, res) => {
   // body should be JSON
   const body = req.body;

@@ -17,7 +17,6 @@ export function Create() {
       headers: headers
     }).then(res => {
       if (res.status == 400) return alert('Please fill out both fields');
-      alert('Blog post successfully created')
       setDone(true);
     }).catch(()=> alert("An error has occured"));
     setDone(false);
@@ -32,7 +31,9 @@ export function Create() {
     );
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+      <h1>Enter Blog Post Details</h1>
+      <form onSubmit={handleSubmit}>
       <input
         placeholder="title"
         value={title}
@@ -46,5 +47,6 @@ export function Create() {
       </div>
       <button>Post</button>
     </form>
+    </div>
   );
 }

@@ -4,10 +4,10 @@ export function Index() {
   return (
     <div>
       <div>
-        <Link to="/create">Create</Link>
+        <Link to="/create">Create Blog Post</Link>
       </div>
       <div>
-        <Link to="/view">View</Link>
+        <Link to="/view">My Blogs</Link>
       </div>
     </div>
   );

@@ -14,6 +14,7 @@ export function View() {
   return (
     <div>
       <Link to="/"> Home</Link>
+      <h1 style={{textAlign: "center"}}>My Blogs</h1>
       <div>
         {posts.map((post) => (
           <div
