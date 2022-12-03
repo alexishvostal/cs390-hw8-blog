@@ -10,7 +10,7 @@ const blogSchema = new Schema({
   content: {
     type: String,
     required: true,
-  },
+  }
 });
 
 export const BlogModel = model("Blog", blogSchema);

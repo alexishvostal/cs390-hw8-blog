@@ -5,10 +5,11 @@ export function Create() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [done, setDone] = useState(false);
+  const [password, setPassword] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    const requestData = JSON.stringify({title, content});
+    const requestData = JSON.stringify({title, content, password});
     const headers = {"content-type": "application/json"};
 
     fetch('http://localhost:3000/blog/create-post', {
@@ -17,6 +18,7 @@ export function Create() {
       headers: headers
     }).then(res => {
       if (res.status == 400) return alert('Please fill out both fields');
+      if (res.status == 401) return alert('Wrong password, please enter the correct password');
       setDone(true);
     }).catch(()=> alert("An error has occured"));
     setDone(false);
@@ -44,6 +46,14 @@ export function Create() {
           value={content}
           onChange={(e) => setContent(e.currentTarget.value)}
         ></textarea>
+      </div>
+      <div>
+        <input
+          placeholder="password"
+          value={password}
+          onChange={(e) => setPassword(e.currentTarget.value)}
+          type="password"
+        />
       </div>
       <button>Post</button>
     </form>
